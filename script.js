@@ -45,7 +45,7 @@ function display(analysis) {
 
   let html = ""
   if (analysis === null) {
-    html += `<h2>No public Github activity to display for this profile.</h2>`
+    html += `<h2>No public Github activity to displaygi for this profile.</h2>`
   } else {
     html +=  `
       ${displayDateAnalysis(analysis)}
