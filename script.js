@@ -49,7 +49,7 @@ function display(analysis) {
   } else {
     html +=  `
       ${displayDateAnalysis(analysis)}
-      <h3>...your longest Github activity streak has been ${analysis.longestStreak} days in a row!</h3>
+      <h3>...your longest Github public activity streak has been ${analysis.longestStreak} days in a row!</h3>
     `
   }
 
@@ -71,7 +71,7 @@ function displayDateAnalysis({ startDate, endDate, dateMap, type }) {
   } else {
     result += `<h2>In the past 90 days...</h2>`
   }
-  result += `<h3>...<strong>you</strong> were active on Github ${daysActive} of those days!`;
+  result += `<h3>...<strong>you</strong> were publically active on Github ${daysActive} of those days!`;
   return result;
 }
 
