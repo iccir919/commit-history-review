@@ -43,7 +43,7 @@ function display(analysis) {
 
   const html =  `
     ${displayDateAnalysis(analysis)}
-    <h3>...your longest Github activity streak has been ${analysis.longestStreak} days!</h3>
+    <h3>...your longest Github activity streak has been ${analysis.longestStreak} days in a row!</h3>
   `
 
   const analysisElement = document.createElement("div");
