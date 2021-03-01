@@ -28,6 +28,7 @@ function getGithubActivity(e) {
 }
 
 function analyze(githubHistory) {
+  if (githubHistory.length === 0) display(null);
   const analysis = {
     type: githubHistory.length === 300 ? "past 300 commits" : "past 90 days",
     dateMap: getHistoryDateMap(githubHistory),
@@ -41,10 +42,17 @@ function analyze(githubHistory) {
 function display(analysis) {
   document.getElementsByTagName("form")[0].style.display = "none";
 
-  const html =  `
-    ${displayDateAnalysis(analysis)}
-    <h3>...your longest Github activity streak has been ${analysis.longestStreak} days in a row!</h3>
-  `
+
+  let html = ""
+  if (analysis === null) {
+    html += `<h2>No public Github activity to display for this profile.</h2>`
+  } else {
+    html +=  `
+      ${displayDateAnalysis(analysis)}
+      <h3>...your longest Github activity streak has been ${analysis.longestStreak} days in a row!</h3>
+    `
+  }
+
 
   const analysisElement = document.createElement("div");
   analysisElement.innerHTML = html;
