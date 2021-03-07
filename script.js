@@ -90,23 +90,19 @@ function getHistoryDateMap(githubHistory) {
 
 function calculateLongestStreak(dates) {
   let longest = 0;
-  let currentStreak = 1;
-  let indexDate = new Date(dates[0]);
-  indexDate.setDate(indexDate.getDate() + 1);
+  let index = 0;
 
-  for (let i = 1; i < dates.length; i++) {
-    let currentDate = new Date(dates[i])
-
-    if (indexDate.getTime() === currentDate.getTime()) {
-      indexDate.setDate(indexDate.getDate() + 1);
+  while (index < dates.length) {
+    let currentStreak = 0;
+    let currentDate = new Date(dates[index]);
+    let dataDate = new Date(dates[index]);
+    while(currentDate.getTime() === dataDate.getTime()) {
       currentStreak++;
-    } else {
-      if (currentStreak > longest) longest = currentStreak;
-      currentStreak = 1;
-      indexDate = new Date(dates[i])
-      indexDate.setDate(indexDate.getDate() + 1);
+      index++;
+      dataDate = new Date(dates[index]);
+      currentDate.setDate(currentDate.getDate() + 1);
     }
+    if (currentStreak > longest) longest = currentStreak;
   }
-
-  return longest;
+  return longest
 }
